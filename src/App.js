@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Header from './components/Layout/Header';
+import AddTodo from './components/AddTodo';
 import './App.css';
 import Todos from './components/Todos';
 
@@ -8,17 +10,17 @@ class App extends Component {
         todos: [
             {
                 id:1,
-                title:'Take out the trash',
+                title:'Finish Todo React',
                 completed: false
             },
             {
                 id: 2,
-                title: 'Dinner with wife',
+                title: 'Complete Tekken Tutorial',
                 completed: false
             },
             {
                 id: 3,
-                title: 'Meeting with boss',
+                title: 'Make Dinner',
                 completed: false
             }
         ]
@@ -38,12 +40,25 @@ class App extends Component {
             })
         })
     }
+// Toggle Delete
+    delTodo = (id) =>{
+        this.setState({ todos:[...this.state.todos.filter(todo => todo.id !== id)]})   
+    }
+
+
 
     render() {
         return ( < div className="App" >
-            {/* Next line allows State to be passed to Todos.js */}
-            {/* Info is rendered here and is being mapped through through Todos.js */}
-            <Todos todos={this.state.todos} markComplete={this.markComplete} />            
+            <div className="container">
+                {/* Header component */}
+                <Header />
+                {/* Add todo input */}
+                <AddTodo />
+                {/* Next line allows State to be passed to Todos.js */}
+                {/* Info is rendered here and is being mapped through through Todos.js */}
+                <Todos todos={this.state.todos} markComplete={this.markComplete} delTodo={this.delTodo} />            
+            </div>
+            
             </div>  
         );
     }

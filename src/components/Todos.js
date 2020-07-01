@@ -19,7 +19,7 @@ extends Component {
         return this.props.todos.map((todo) => (
 // Todoitem is being passed into this component which will display the title and id.
 // Prop markComplete is passed here and set to run what this.markComplete it. Also set to run that on whatever is the current item(key) is selected. 
-        <Todoitem key={todo.id} todo={todo} markComplete={this.props.markComplete} />
+        <Todoitem key={todo.id} todo={todo} markComplete={this.props.markComplete} delTodo={this.props.delTodo} />
 
         ))
     }

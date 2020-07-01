@@ -17,8 +17,6 @@ return{
 
 }
  
-
-
 render(){
     const btnStyle = {
         backgroundColor: 'light-blue',
@@ -30,13 +28,13 @@ render(){
         float: 'right'
     }
     // Pulling the id and title of whatever the current todo is. Stored in a variable. As not to repeat "this.props.todo code."
-    const {id, title} = this.props.todo;
+    const {id, title,completed} = this.props.todo;
         return(
             <div style={this.getStyle()}>
                 <p>
                     {/* When box is checked we are calling the markComplete function */}
                     <input type="checkbox" onChange={this.props.markComplete.bind (this, id)}/> {''}  {title}
-                    <button style={btnStyle}>x</button>
+                    <button onClick={this.props.delTodo.bind(this, id, completed)} style={btnStyle}>x</button>
                     </p>
             </div>
          )
